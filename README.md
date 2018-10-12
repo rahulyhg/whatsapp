@@ -23,7 +23,7 @@ a package for work with [api chat-api.com](https://chat-api.com)
 
 Run this command in console:
 ```
-composer require leRisen/WhatsApp
+composer require leRisen/whatsapp
 ```
 
 ## Sample
