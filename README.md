@@ -60,7 +60,7 @@ setApiUrl($url)
 
 Example:
 ```php
-$api->setApiUrl('https://foo.chat-api.com/')
+$api->setApiUrl('https://foo.chat-api.com/');
 ```
 
 ### Set token
@@ -103,14 +103,14 @@ $api->getToken(); // qwerty
 ### Set webhook
 
 ```php
-setWebhook($url)
+$api->setWebHook($url);
 ```
- - return `WhatsAppApiResult`
+ - return `WhatsAppApiRequest`
 
 ### Get webhook
 
 ```php
-getWebhook($url)
+$api->getWebHook();
 ```
  - return `WhatsAppApiRequest`
 
@@ -121,9 +121,9 @@ $data = [
     'chatId': '79615238147@c.us',
     'body': 'https://upload.wikimedia.org/wikipedia/ru/3/33/NatureCover2001.jpg',
     'filename': 'cover.jpg',
-]
+];
 
-sendMessage($data)
+$api->sendMessage($data);
 ```
  - `$data` (array) - params (required)
  - return `WhatsAppApiRequest`
@@ -133,9 +133,9 @@ sendMessage($data)
 ```php
 $data = [
     'lastMessageNumber' => 99,
-]
+];
 
-messagesList($data)
+$api->messagesList($data);
 ```
  - `$data` (array) - params (required)
  - return `WhatsAppApiRequest`
