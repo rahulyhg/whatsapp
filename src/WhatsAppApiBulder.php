@@ -11,7 +11,7 @@
 
 namespace leRisen\WhatsApp;
 
-class WhatsAppApiBuilder
+class WhatsAppApiBulder
 {
     /**
      * @var string
@@ -26,8 +26,8 @@ class WhatsAppApiBuilder
     /**
      * Constructor.
      *
-     * @param string      $url
-     * @param string      $method
+     * @param string $url
+     * @param string $method
      */
     public function __construct($url, $method)
     {
@@ -38,9 +38,11 @@ class WhatsAppApiBuilder
     public function build()
     {
         $url = $this->url;
-        
+
         $slash = '/';
-        if (substr($url, -1) !== $slash) $url .= $slash;
+        if (substr($url, -1) !== $slash) {
+            $url .= $slash;
+        }
 
         $method = $this->method;
 
