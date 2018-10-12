@@ -69,11 +69,11 @@ class WhatsAppApiRequest
     /**
      * Constructor.
      *
-     * @param string      $apiUrl
-     * @param string      $token
-     * @param string      $method
-     * @param string      $dispatchMethod
-     * @param array       $data
+     * @param string $apiUrl
+     * @param string $token
+     * @param string $method
+     * @param string $dispatchMethod
+     * @param array  $data
      */
     public function __construct($apiUrl, $token, $method, $dispatchMethod, $data = [])
     {
@@ -101,7 +101,7 @@ class WhatsAppApiRequest
         $result = new WhatsAppApiResult();
 
         $json = json_decode((string) $response->getBody(), true);
-        
+
         $error = false;
 
         if (!$this->ignoreError) {
@@ -166,9 +166,9 @@ class WhatsAppApiRequest
                 'query' => [
                     $this->data,
                     [
-                        'token' => $this->token
-                    ]
-                ]
+                        'token' => $this->token,
+                    ],
+                ],
             ]
         );
 

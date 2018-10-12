@@ -51,9 +51,9 @@ class WhatsAppApiClient
     /**
      * Create request.
      *
-     * @param string      $method
-     * @param string      $dispatchMethod
-     * @param array       $data
+     * @param string $method
+     * @param string $dispatchMethod
+     * @param array  $data
      *
      * @return WhatsAppApiRequest
      */
@@ -64,9 +64,9 @@ class WhatsAppApiClient
 
     /**
      * Set api url.
-     * 
+     *
      * @param string $url
-     * 
+     *
      * @return WhatsAppApiClient
      */
     public function setApiUrl(string $url): self
@@ -74,7 +74,7 @@ class WhatsAppApiClient
         $this->apiUrl = $url;
 
         return $this;
-    }    
+    }
 
     /**
      * Set token.
@@ -110,9 +110,9 @@ class WhatsAppApiClient
 
     /**
      * Set webhook.
-     * 
+     *
      * @param string $url
-     * 
+     *
      * @return WhatsAppApiRequest
      */
     public function setWebHook(string $url): WhatsAppApiRequest
@@ -121,8 +121,8 @@ class WhatsAppApiClient
     }
 
     /**
-     * Get webhook
-     * 
+     * Get webhook.
+     *
      * @return WhatsAppApiRequest
      */
     public function getWebHook(): WhatsAppApiRequest
@@ -146,7 +146,7 @@ class WhatsAppApiClient
      * Returns messages list.
      *
      * @param array $data
-     * 
+     *
      * @return WhatsAppApiRequest
      */
     public function messagesList(array $data): WhatsAppApiRequest
