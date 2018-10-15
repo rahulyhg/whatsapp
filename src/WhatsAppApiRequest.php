@@ -157,18 +157,15 @@ class WhatsAppApiRequest
             $this->method
         );
 
+        $this->data['token'] = $this->token;
+
         $response = $this->client->request(
             $this->dispatchMethod, $builder->build(),
             [
                 'headers' => [
                     'Accept' => static::HEADER_ACCEPT,
                 ],
-                'query' => [
-                    $this->data,
-                    [
-                        'token' => $this->token,
-                    ],
-                ],
+                'query' => $this->data,
             ]
         );
 
