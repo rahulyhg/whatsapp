@@ -100,6 +100,20 @@ Example:
 $api->getToken(); // qwerty
 ```
 
+### Get account status and QR code for authorization
+
+```php
+$api->getStatus();
+```
+ - return `WhatsAppApiRequest`
+
+### Direct link to the QR code as an image
+
+```php
+$api->getQrCode();
+```
+ - return `WhatsAppApiRequest`
+
 ### Set webhook
 
 ```php
@@ -118,12 +132,25 @@ $api->getWebHook();
 
 ```php
 $data = [
+    'phone': '79615238147',
+    'body': 'Hello, brother! 🍏',
+];
+
+$api->sendMessage($data);
+```
+ - `$data` (array) - params (required)
+ - return `WhatsAppApiRequest`
+
+### Send a file
+
+```php
+$data = [
     'chatId': '79615238147@c.us',
     'body': 'https://upload.wikimedia.org/wikipedia/ru/3/33/NatureCover2001.jpg',
     'filename': 'cover.jpg',
 ];
 
-$api->sendMessage($data);
+$api->sendFile($data);
 ```
  - `$data` (array) - params (required)
  - return `WhatsAppApiRequest`
@@ -138,4 +165,37 @@ $data = [
 $api->messagesList($data);
 ```
  - `$data` (array) - params (required)
+ - return `WhatsAppApiRequest`
+
+### Show a list of messages that are queued for shipment but not yet sent
+
+```php
+$api->showMessagesQueue();
+```
+ - return `WhatsAppApiRequest`
+
+### Clear the message queue.
+```php
+$api->clearMessagesQueue();
+```
+ - return `WhatsAppApiRequest`
+
+### Enable or disable the receipt of information about the delivery and reading of sent messages ack in the webhook
+```php
+$enable = true;
+
+$api->notifications($enable);
+```
+ - return `WhatsAppApiRequest`
+
+### Sign out and request a new QR code
+```php
+$api->logout();
+```
+ - return `WhatsAppApiRequest`
+
+### Reload your WhatsApp instance
+```php
+$api->logout();
+```
  - return `WhatsAppApiRequest`

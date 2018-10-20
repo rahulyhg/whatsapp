@@ -13,7 +13,7 @@ namespace leRisen\WhatsApp;
 
 use leRisen\WhatsApp\Enums\WhatsAppAuxiliary;
 use leRisen\WhatsApp\Enums\WhatsAppMethods;
-use leRisen\WhatsApp\Exceptions\WhatsAppClientException;
+use RuntimeException;
 
 class WhatsAppApiClient
 {
@@ -33,7 +33,7 @@ class WhatsAppApiClient
      * @param string $url
      * @param string $token
      *
-     * @throws WhatsAppClientException
+     * @throws RuntimeException
      */
     public function __construct($url, $token)
     {
@@ -44,7 +44,7 @@ class WhatsAppApiClient
             $this->setApiUrl($url);
             $this->setToken($token);
         } else {
-            throw new WhatsAppClientException(WhatsAppAuxiliary::MSG_EXTENSION_REQUIRED);
+            throw new RuntimeException(WhatsAppAuxiliary::MSG_EXTENSION_REQUIRED);
         }
     }
 
@@ -109,6 +109,26 @@ class WhatsAppApiClient
     }
 
     /**
+     * Get account status and QR code for authorization.
+     *
+     * @return WhatsAppApiRequest
+     */
+    public function getStatus()
+    {
+        return $this->createRequest(WhatsAppMethods::STATUS, 'GET');
+    }
+
+    /**
+     * Direct link to the QR code as an image.
+     *
+     * @return WhatsAppApiRequest
+     */
+    public function getQrCode()
+    {
+        return $this->createRequest(WhatsAppMethods::QR_CODE, 'GET');
+    }
+
+    /**
      * Set webhook.
      *
      * @param string $url
@@ -143,6 +163,18 @@ class WhatsAppApiClient
     }
 
     /**
+     * Send a file.
+     *
+     * @param array $data
+     *
+     * @return WhatsAppApiRequest
+     */
+    public function sendFile(array $data): WhatsAppApiRequest
+    {
+        return $this->createRequest(WhatsAppMethods::SEND_FILE, 'POST', $data);
+    }
+
+    /**
      * Returns messages list.
      *
      * @param array $data
@@ -152,5 +184,69 @@ class WhatsAppApiClient
     public function messagesList(array $data): WhatsAppApiRequest
     {
         return $this->createRequest(WhatsAppMethods::MESSAGES, 'GET', $data);
+    }
+
+    /**
+     * Show a list of messages that are queued for shipment but not yet sent.
+     *
+     * @return WhatsAppApiRequest
+     */
+    public function showMessagesQueue()
+    {
+        return $this->createRequest(WhatsAppMethods::SHOW_MESSAGES_QUEUE, 'GET');
+    }
+
+    /**
+     * Clear the message queue.
+     *
+     * @return WhatsAppApiRequest
+     */
+    public function clearMessagesQueue()
+    {
+        return $this->createRequest(WhatsAppMethods::CLEAR_MESSAGES_QUEUE, 'GET');
+    }
+
+    /**
+     * Creating a group and sending a message to the created group.
+     *
+     * @param array $data
+     *
+     * @return WhatsAppApiRequest
+     */
+    public function group(array $data): WhatsAppApiRequest
+    {
+        return $this->createRequest(WhatsAppMethods::GROUP, 'POST', $data);
+    }
+
+    /**
+     * Enable or disable the receipt of information about the delivery and reading of sent messages ack in the webhook.
+     *
+     * @param boolean $enable
+     *
+     * @return WhatsAppApiRequest
+     */
+    public function notifications(bool $enable): WhatsAppApiRequest
+    {
+        return $this->createRequest(WhatsAppMethods::NOTIFICATIONS, ['ackNotificationsOn' => $enable]);
+    }
+
+    /**
+     * Sign out and request a new QR code.
+     *
+     * @return WhatsAppApiRequest
+     */
+    public function logout()
+    {
+        return $this->createRequest(WhatsAppMethods::LOGOUT, 'GET');
+    }
+
+    /**
+     * Reload your WhatsApp instance.
+     *
+     * @return WhatsAppApiRequest
+     */
+    public function reboot()
+    {
+        return $this->createRequest(WhatsAppMethods::REBOOT, 'GET');
     }
 }

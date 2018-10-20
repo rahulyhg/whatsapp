@@ -13,7 +13,18 @@ namespace leRisen\WhatsApp\Enums;
 
 class WhatsAppMethods
 {
+    const STATUS = 'status';
+    const QR_CODE = 'qr_code';
     const WEBHOOK = 'webhook';
+
     const SEND_MESSAGE = 'sendMessage';
+    const SEND_FILE = 'sendFile';
     const MESSAGES = 'messages';
+    const GROUP = 'group';
+    const SHOW_MESSAGES_QUEUE = 'showMessagesQueue';
+    const CLEAR_MESSAGES_QUEUE = 'clearMessagesQueue';
+
+    const NOTIFICATIONS = 'settings/ackNotificationsOn';
+    const LOGOUT = 'logout';
+    const REBOOT = 'reboot';
 }
