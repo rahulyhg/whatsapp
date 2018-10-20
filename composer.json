@@ -1,7 +1,7 @@
 {
   "name": "le-risen/whatsapp",
   "type": "lib",
-  "version": "1.0.1",
+  "version": "1.1",
   "license": "MIT",
   "homepage": "https://github.com/leRisen/whatsapp",
   "description": "An unofficial API to interact with the service chat-api.com",

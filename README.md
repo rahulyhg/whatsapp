@@ -180,7 +180,7 @@ $api->clearMessagesQueue();
 ```
  - return `WhatsAppApiRequest`
 
-### Enable or disable the receipt of information about the delivery and reading of sent messages ack in the webhook
+### Enable or disable ack notifications
 ```php
 $enable = true;
 
